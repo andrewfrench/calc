@@ -1,7 +1,7 @@
 calc
 ====
 
-modular calculator base code.
+modular calculator for the masses.
 
 collaborators:
 
