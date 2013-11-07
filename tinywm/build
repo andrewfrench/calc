@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gcc -o tinywm tinywm.c --x-includes=/usr/include/X11
