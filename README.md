@@ -5,9 +5,9 @@ modular calculator base code.
 
 collaborators:
 
-	andrew french
+	andrew french (andrewfrench)
 
-	chris rice
+	chris rice (penguinpower)
 
-	trevor westphal
+	trevor westphal (twestpha)
 
