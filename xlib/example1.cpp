@@ -1,24 +1,27 @@
 #include <X11/Xlib.h>
 #include <unistd.h>
+#include <stdio.h>
 
-main()
-{
-  // Open a display.
-  Display *d = XOpenDisplay(0);
-
-  if ( d )
-    {
-      // Create the window
-      Window w = XCreateWindow(d, DefaultRootWindow(d), 0, 0, 200,
+int main(){
+    printf("Hello, world. I'm running!");
+    // Open a display.
+    Display *d = XOpenDisplay(0);
+    if(d){
+       // Create the window
+       Window w = XCreateWindow(d, DefaultRootWindow(d), 0, 0, 200,
 			       100, 0, CopyFromParent, CopyFromParent,
 			       CopyFromParent, 0, 0);
 
-      // Show the window
-      XMapWindow(d, w);
-      XFlush(d);
+        // Show the window
+        XMapWindow(d, w);
+        XFlush(d);
 
-      // Sleep long enough to see the window.
-      sleep(10);
+	printf("Everything worked ok");
+
+        // Sleep long enough to see the window.
+        sleep(10);
+    } else {
+	printf("Error Error");
     }
-  return 0;
+    return 0;
 }
