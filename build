@@ -1,0 +1,3 @@
+#!/bin/sh
+
+g++ main.cpp CharacterDisplay.cpp CustomCharacter.cpp -lX11 -o calque -I/usr/X11R6/include

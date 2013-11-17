@@ -8,6 +8,8 @@
 
 #include "CharacterDisplay.h"
 
+//#include "icon.bmp"
+
 Display *dis;
 Window win;
 
@@ -38,17 +40,60 @@ int main(){
 	XAllocColor(dis, colormap, &green_col);
 	XSetForeground(dis, gc, green_col.pixel);
 
+	//Pixmap Things
+
+	/* this variable will contain the ID of the newly created pixmap.    */
+	Pixmap bitmap;
+
+	/* these variables will contain the dimensions of the loaded bitmap. */
+	unsigned int bitmap_width, bitmap_height;
+
+	/* these variables will contain the location of the hot-spot of the   */
+	/* loaded bitmap.                                                    */
+	int hotspot_x, hotspot_y;
+
+	/* load the bitmap found in the file "icon.bmp", create a pixmap      */
+	/* containing its data in the server, and put its ID in the 'bitmap'  */
+	/* variable.                                                          */
+	int rc = XReadBitmapFile(dis, win,
+                         "icon.xbm",
+                         &bitmap_width, &bitmap_height,
+                         &bitmap,
+                         &hotspot_x, &hotspot_y);
+
+	switch (rc) {
+    case BitmapOpenFailed:
+        fprintf(stderr, "XReadBitmapFile - could not open file 'icon.bmp'.\n");
+        break;
+    case BitmapFileInvalid:
+        fprintf(stderr,
+                "XReadBitmapFile - file '%s' doesn't contain a valid bitmap.\n",
+                "icon.bmp");
+        break;
+    case BitmapNoMemory:
+        fprintf(stderr, "XReadBitmapFile - not enough memory.\n");
+        break;
+    case BitmapSuccess:
+        /* bitmap loaded successfully - do something with it... */
+   		printf("Loaded bitmap successfully.\n");
+        break;
+	}
+
 	XSelectInput (dis, win, KeyPressMask);
 
 	while (1) {
 		XNextEvent(dis, &report);
 		switch (report.type) {
 			case KeyPress:
-			int key = XLookupKeysym(&report.xkey
-				, 0);
-				//printf("You pressed key: %d.\n", key);
+			int key = XLookupKeysym(&report.xkey, 0);
+
 			input.addCharacter(key);
-			input.display(dis, win, gc);
+			input.display(dis, win, gc, bitmap);
+
+			//XCopyPlane(dis, bitmap, win, gc,
+          	//	0, 0, bitmap_width, bitmap_height,
+          	//	100, 50,1);
+
 			break;	
 			
 		}

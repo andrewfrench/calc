@@ -10,7 +10,7 @@ class CharacterDisplay {
 public:
 	CharacterDisplay();
 	void addCharacter(int key);
-	void display(Display* dis, Window w, GC gc);
+	void display(Display* dis, Window w, GC gc, Pixmap bitmap);
 private:
 	std::vector<CustomCharacter> character_list;
 };
