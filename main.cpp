@@ -53,7 +53,7 @@ int main(){
 			XClearWindow(dis, win);
 
 			int key = XLookupKeysym(&report.xkey, 0);
-			printf("%d", key);
+			printf("%d\n", key);
 
 			if (key != DELETE_KEY) {
 				input.addCharacter(key);
