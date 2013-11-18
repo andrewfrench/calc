@@ -10,13 +10,19 @@
 
 class CharacterDisplay {
 public:
-	CharacterDisplay();
+	CharacterDisplay(Display* dis, Window win);
 	void addCharacter(int key);
 	void deleteCharacter();
-	void display(Display* dis, Window w, GC gc, Pixmap bitmap);
+	void display(GC gc);
 private:
+
+	void loadConfig();
+
 	std::vector<CustomCharacter> character_list;
-	std::map<int, std::string> bitmap_list; 
+	std::map<int, Pixmap> bitmap_list; 
+	Display* dis;
+	Window win;
+	
 };
 
 #endif

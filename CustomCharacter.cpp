@@ -1,7 +1,6 @@
 #include "CustomCharacter.h"
 
 
-CustomCharacter::CustomCharacter(int key, std::string filename){
+CustomCharacter::CustomCharacter(int key){
 	this->key = (char)key;
-	this->filename = filename;
 }

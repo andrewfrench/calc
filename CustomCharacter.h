@@ -5,12 +5,10 @@
 
 class CustomCharacter {
 public:
-	CustomCharacter(int key, std::string filename);
+	CustomCharacter(int key);
 	char getKey() { return key; }
-	std::string getFilename() { return filename; }
 private:
 	char key;
-	std::string filename;
 };
 
 #endif
