@@ -10,6 +10,8 @@
 
 //#include "icon.bmp"
 
+const int DELETE_KEY = 65288;
+
 Display *dis;
 Window win;
 
@@ -86,8 +88,13 @@ int main(){
 		switch (report.type) {
 			case KeyPress:
 			int key = XLookupKeysym(&report.xkey, 0);
-
-			input.addCharacter(key);
+			printf("%d", key);
+			if (key != DELETE_KEY) {
+				input.addCharacter(key);
+			} else {
+				input.deleteCharacter();
+			}
+			
 			input.display(dis, win, gc, bitmap);
 
 			//XCopyPlane(dis, bitmap, win, gc,
