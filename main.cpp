@@ -87,6 +87,8 @@ int main(){
 		XNextEvent(dis, &report);
 		switch (report.type) {
 			case KeyPress:
+			XClearWindow(dis, win);
+
 			int key = XLookupKeysym(&report.xkey, 0);
 			printf("%d", key);
 			if (key != DELETE_KEY) {
